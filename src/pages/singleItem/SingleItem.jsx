@@ -11,7 +11,7 @@ function SingleItem(props) {
   }, []);
 
   const loading = useSelector((state) => state.Item.loadingItem);
-  const item = useSelector((state) => state.Item.state.item);
+  const item = useSelector((state) => state.Item.item);
   return (
     <div>{loading ? <CircularProgress /> : <ItemDetails item={item} />}</div>
   );

@@ -62,7 +62,7 @@ export default function ItemDetails(item) {
         }
         subheader="September 14, 2016"
       />
-      <img src={item[0].strDrinkThumb} alt="" width="100%" />
+      {/* <img src={item[0].strDrinkThumb} alt="" width="100%" /> */}
       <CardContent>
         <Typography
           variant="body2"
