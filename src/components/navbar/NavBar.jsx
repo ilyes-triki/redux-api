@@ -9,6 +9,9 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { SearchAction } from "../../redux/actions/SearchAction";
+import { GetItems } from "../../redux/actions/GetItemsAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,8 +71,10 @@ const useStyles = makeStyles((theme) => ({
 export default function NavBar() {
   const classes = useStyles();
   const [toogle, settoogle] = useState(false);
+  const dispatch = useDispatch();
 
   console.log(toogle);
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -110,11 +115,17 @@ export default function NavBar() {
           {toogle ? (
             ""
           ) : (
+            // detail page loading = true ? hooks ? use state ? from home ?  app ? or a reducer ?
             <div className={classes.search} style={{ marginLeft: "69%" }}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <InputBase
+                onChange={(e) => {
+                  dispatch(SearchAction(e.target.value));
+
+                  dispatch(GetItems(e.target.value));
+                }}
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,

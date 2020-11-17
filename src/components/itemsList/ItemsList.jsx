@@ -12,6 +12,8 @@ function ItemsList() {
     <div className="items">
       {loading ? (
         <CircularProgress />
+      ) : items === null ? (
+        "Nothing To Show"
       ) : (
         items.map((el, i) => {
           return <Item key={i} item={el} />;

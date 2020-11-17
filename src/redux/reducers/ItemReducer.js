@@ -14,7 +14,5 @@ export const ItemReducer = (state = initialState, action) => {
 
     default:
   }
-  return {
-    state,
-  };
+  return state;
 };

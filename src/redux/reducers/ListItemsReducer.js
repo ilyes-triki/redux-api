@@ -1,4 +1,5 @@
 import { GET_ITEMS } from "../constants/GetItems";
+import { SEARCH } from "../constants/Search";
 const initialState = {
   items: [],
   loading: true,
@@ -11,7 +12,6 @@ export const ListItemsReducer = (state = initialState, action) => {
         loading: false,
         items: action.payload,
       };
-
     default:
       return state;
   }
