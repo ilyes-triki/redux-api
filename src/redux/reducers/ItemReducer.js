@@ -9,6 +9,7 @@ export const ItemReducer = (state = initialState, action) => {
       return {
         ...state,
         loadingItem: false,
+
         item: action.payload,
       };
 

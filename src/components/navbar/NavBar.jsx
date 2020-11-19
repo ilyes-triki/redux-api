@@ -6,10 +6,10 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
+
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SearchAction } from "../../redux/actions/SearchAction";
 import { GetItems } from "../../redux/actions/GetItemsAction";
 
@@ -72,7 +72,9 @@ export default function NavBar() {
   const classes = useStyles();
   const [toogle, settoogle] = useState(false);
   const dispatch = useDispatch();
-
+  const loadingItem = useSelector((state) => state.Item.loadingItem);
+  const loadingSearch = !loadingItem;
+  console.log(loadingSearch);
   console.log(toogle);
 
   return (
@@ -84,9 +86,7 @@ export default function NavBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
+          ></IconButton>
 
           <Typography style={{ marginLeft: "1%" }} variant="h6" noWrap>
             <Link
@@ -114,8 +114,9 @@ export default function NavBar() {
 
           {toogle ? (
             ""
+          ) : loadingSearch ? (
+            ""
           ) : (
-            // detail page loading = true ? hooks ? use state ? from home ?  app ? or a reducer ?
             <div className={classes.search} style={{ marginLeft: "69%" }}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
